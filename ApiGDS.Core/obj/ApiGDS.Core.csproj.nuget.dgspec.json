@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\api\\ApiGDS\\ApiGDS.Core\\ApiGDS.Core.csproj": {}
+    "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\api\\ApiGDS\\ApiGDS.Core\\ApiGDS.Core.csproj": {
+    "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\api\\ApiGDS\\ApiGDS.Core\\ApiGDS.Core.csproj",
+        "projectUniqueName": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj",
         "projectName": "ApiGDS.Core",
-        "projectPath": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\api\\ApiGDS\\ApiGDS.Core\\ApiGDS.Core.csproj",
+        "projectPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj",
         "packagesPath": "C:\\Users\\sfmvf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\api\\ApiGDS\\ApiGDS.Core\\obj\\",
+        "outputPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\sfmvf\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

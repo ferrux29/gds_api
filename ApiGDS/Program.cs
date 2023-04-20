@@ -1,6 +1,7 @@
 using ApiGDS.Core.Interfaces;
 using ApiGDS.Infraestructure.DbCtx;
 using ApiGDS.Infraestructure.Service;
+using ApiGDS.Infraestructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,10 +15,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 string? connectionString = builder.Configuration.GetConnectionString("CS1");
-builder.Services.AddDbContext<DataContext>(
+builder.Services.AddDbContext<AppDbContext>(
     optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
 builder.Services.AddScoped<IClienteRepository, ClientService>();
 builder.Services.AddScoped<IContratoRepository, ContratoService>(); 
+builder.Services.AddScoped<IConsultantRepository, ConsultantService>(); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

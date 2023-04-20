@@ -18,12 +18,11 @@ namespace ApiGDS.Api.Controllers
     [ApiController]
     public class ClientsController : ControllerBase
     {
-        private readonly DataContext _context;
+       
         private readonly IClienteRepository _clienteRepository;
 
-        public ClientsController(DataContext context, IClienteRepository clientRepo)
-        {
-            _context = context ?? throw new ArgumentNullException(nameof(context));
+        public ClientsController(IClienteRepository clientRepo)
+        {           
             _clienteRepository = clientRepo ?? throw new ArgumentNullException(nameof(clientRepo));
         }
 
@@ -31,30 +30,21 @@ namespace ApiGDS.Api.Controllers
         [HttpGet("/GetClients")]
         public async Task<ActionResult<IEnumerable<Client>>> Get()
         {
-            if (_context.Clientes == null)
-            {
-                return NotFound();
-            }
+           
             return await _clienteRepository.GetAllClients();
         }
         //GET: clients/5
         [HttpGet("/GetClientsById/{id:int}")]
         public async Task<ActionResult<Client>> GetClient(int id)
         {
-            if (_context.Clientes == null)
-            {
-                return NotFound();
-            }
+           
             return await _clienteRepository.GetClientById(id);
         }
         //GET: clients/name
         [HttpGet("/GetClientsByName/")]
         public async Task<ActionResult<Client>> GetClient(string name)
         {
-            if (_context.Clientes == null)
-            {
-                return NotFound();
-            }
+          
             return await _clienteRepository.GetClientByName(name);
         }
 
@@ -91,7 +81,7 @@ namespace ApiGDS.Api.Controllers
         [HttpDelete("/DeleteClienteById/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Clientes == null)
+            if (id == null)
             {
                 return NotFound();
             }

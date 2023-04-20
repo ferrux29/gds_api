@@ -14,8 +14,8 @@ namespace ApiGDS.Infraestructure.Service
 {
     public class ContratoService : IContratoRepository 
     {
-        public  readonly DataContext _context;
-        public ContratoService(DataContext context) {  
+        public  readonly AppDbContext _context;
+        public ContratoService(AppDbContext context) {  
             _context = context; 
         }
 
@@ -80,20 +80,7 @@ namespace ApiGDS.Infraestructure.Service
         }
 
         public Task<bool> UpdateContratoById(int contratoId, Contrato updatedContrato)
-        {/*
-            try
-            {
-                var client = Clientes.First(client => client.Id == clientId);
-                client.Id = updatedClient.Id;
-                client.Name = updatedClient.Name;
-                client.ClienteCategory = updatedClient.ClienteCategory;
-                return Task.FromResult(true);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw new NotFoundException($"Client with id {clientId} not found.");
-            }*/
+        {
             throw new NotImplementedException();
         }
 
@@ -101,7 +88,10 @@ namespace ApiGDS.Infraestructure.Service
         {
             var contrato = await _context.Contratos
                 .FirstOrDefaultAsync(m => m.Id == contratoId);
-            if (contrato == null) { return false; }
+            if (contrato == null) 
+            { 
+                return false; 
+            }
             _context.Contratos.Remove(contrato);
             await _context.SaveChangesAsync();
             return true;

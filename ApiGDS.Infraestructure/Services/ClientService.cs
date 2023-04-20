@@ -15,8 +15,8 @@ namespace ApiGDS.Infraestructure.Service
 {
     public class ClientService : IClienteRepository
     {
-        private readonly DataContext _context;
-        public ClientService(DataContext context)
+        private readonly AppDbContext _context;
+        public ClientService(AppDbContext context)
         {
             _context = context;
         }
@@ -57,20 +57,7 @@ namespace ApiGDS.Infraestructure.Service
         }
 
         public Task<bool> UpdateClientById(int clientId, Client updatedClient)
-        {/*
-            try
-            {
-                var client = Clientes.First(client => client.Id == clientId);
-                client.Id = updatedClient.Id;
-                client.Name = updatedClient.Name;
-                client.ClienteCategory = updatedClient.ClienteCategory;
-                return Task.FromResult(true);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw new NotFoundException($"Client with id {clientId} not found.");
-            }*/
+        {
             throw new NotImplementedException();
         }
 
@@ -78,7 +65,10 @@ namespace ApiGDS.Infraestructure.Service
         {
             var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.Id == clientId);
-            if (cliente == null) { return false; }
+            if (cliente == null) 
+            { 
+                return false; 
+            }
              _context.Clientes.Remove(cliente);
             await _context.SaveChangesAsync();
             return true;
