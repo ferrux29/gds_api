@@ -20,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(
 builder.Services.AddScoped<IClienteRepository, ClientService>();
 builder.Services.AddScoped<IContratoRepository, ContratoService>(); 
 builder.Services.AddScoped<IConsultantRepository, ConsultantService>(); 
+builder.Services.AddScoped<IAppendixRepository, AppendixService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
