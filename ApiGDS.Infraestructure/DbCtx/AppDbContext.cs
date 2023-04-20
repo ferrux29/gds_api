@@ -18,6 +18,7 @@ namespace ApiGDS.Infraestructure.DbCtx
         public DbSet<Contrato> Contratos { get; set; }
         public DbSet<Consultant> Consultores { get; set; }
         public DbSet<Appendix> Anexos { get; set; }
+        public DbSet<Bill> Facturas { get; set; }
     }
 
 }

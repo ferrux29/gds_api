@@ -21,6 +21,7 @@ builder.Services.AddScoped<IClienteRepository, ClientService>();
 builder.Services.AddScoped<IContratoRepository, ContratoService>(); 
 builder.Services.AddScoped<IConsultantRepository, ConsultantService>(); 
 builder.Services.AddScoped<IAppendixRepository, AppendixService>();
+builder.Services.AddScoped<IBillRepository, BillService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
