@@ -19,16 +19,16 @@ namespace ApiGDS.Api.Controllers
         private readonly DataContext _context;
         private readonly IContratoRepository _contratoRepository;
 
-        public ContratoesController(DataContext context, IContratoRepository clientRepo)
+        public ContratoesController(DataContext context, IContratoRepository ontratoRepo)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
-            _contratoRepository = clientRepo ?? throw new ArgumentNullException(nameof(clientRepo));
+            _contratoRepository = ontratoRepo ?? throw new ArgumentNullException(nameof(ontratoRepo));
         }
         // GET: api/Contratoes
         [HttpGet("/GetContracts")]
         public async Task<ActionResult<IEnumerable<Contrato>>> GetContratos()
         {
-            if (_context.Clientes == null)
+            if (_context.Contratos == null)
             {
                 return NotFound();
             }
@@ -45,7 +45,7 @@ namespace ApiGDS.Api.Controllers
             return await _contratoRepository.GetContratoById(id);
         }
         //GET: api/contratoes/name
-        [HttpGet("/GetContractByName/")]
+        [HttpGet("/GetContractByName")]
         public async Task<ActionResult<Contrato>> GetContrato(string name)
         {
             if (_context.Contratos == null)
@@ -55,7 +55,7 @@ namespace ApiGDS.Api.Controllers
             return await _contratoRepository.GetContratoByName(name);
         }
         //GET: api/contratoes/clase
-        [HttpGet("/GetContractByClase/")]
+        [HttpGet("/GetContractByClase")]
         public async Task<ActionResult<Contrato>> GetContratoClase(string clase)
         {
             if (_context.Contratos == null)

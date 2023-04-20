@@ -11,7 +11,7 @@ namespace ApiGDS.Core.Entities
        public int Id { get; set; }
        public string Clase { get; set; } = string.Empty;
        public string Name { get; set; } = string.Empty;
-       public Client? Client { get; set; }
+       public Client Client { get; set; } = new Client();
        public string ClienteName { get; set; } = string.Empty;
     }
 }

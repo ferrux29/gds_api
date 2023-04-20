@@ -15,15 +15,20 @@ namespace ApiGDS.Infraestructure.Service
     public class ContratoService : IContratoRepository 
     {
         public  readonly DataContext _context;
-        public ContratoService(DataContext context) {  _context = context; }
+        public ContratoService(DataContext context) {  
+            _context = context; 
+        }
 
-        public Task<List<Contrato>> GetAllContratos()
+        public async Task<List<Contrato>> GetAllContratos()
         {
-            return Task.FromResult(_context.Contratos.ToList());
+            return await _context.Contratos.Include(c => c.Client).ToListAsync();
         }
         public Task<Contrato> GetContratoById(int id)
         {
-            var searchedContrato = _context.Contratos.FirstOrDefault(contrato => contrato.Id == id);
+            var searchedContrato = _context.Contratos.FirstOrDefault(
+                contrato => contrato.Id == id
+            );
+
             if (searchedContrato == null)
             {
                 throw new NotFoundException($"Contrato with id {id} not found.");
@@ -56,10 +61,19 @@ namespace ApiGDS.Infraestructure.Service
         }
         public async Task<Contrato> PostContrato(ContratoDTO newContratoDTO)
         {
-            Contrato contrato = new Contrato();
-            contrato.Name = newContratoDTO.Name;
-            contrato.Clase = newContratoDTO.Clase;
-            contrato.ClienteName = newContratoDTO.ClienteName;
+            Client? client = _context.Clientes.FirstOrDefault(cliente => cliente.Name == newContratoDTO.ClienteName);
+            if (client == null) 
+            {
+                throw new NotFoundException($"Cliente with name {newContratoDTO.ClienteName} not found.");
+            };
+
+            Contrato contrato = new()
+            {
+                Name = newContratoDTO.Name,
+                Clase = newContratoDTO.Clase,
+                ClienteName = newContratoDTO.ClienteName,
+                Client = client
+            };
             _context.Contratos.Add(contrato);
             await _context.SaveChangesAsync();
             return contrato;

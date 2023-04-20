@@ -17,6 +17,7 @@ string? connectionString = builder.Configuration.GetConnectionString("CS1");
 builder.Services.AddDbContext<DataContext>(
     optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
 builder.Services.AddScoped<IClienteRepository, ClientService>();
+builder.Services.AddScoped<IContratoRepository, ContratoService>(); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
