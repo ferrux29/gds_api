@@ -10832,19 +10832,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sfmvf\\.nuget\\packages\\": {}
+    "C:\\Users\\sfmvf\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
+      "projectUniqueName": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
       "projectName": "ApiGDS.Infraestructure",
-      "projectPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
+      "projectPath": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
       "packagesPath": "C:\\Users\\sfmvf\\.nuget\\packages\\",
-      "outputPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\obj\\",
+      "outputPath": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\sfmvf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10858,8 +10863,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj": {
-              "projectPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj"
+            "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj": {
+              "projectPath": "C:\\Users\\sfmvf\\Documents\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj"
             }
           }
         }
@@ -10909,7 +10914,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

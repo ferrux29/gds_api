@@ -20,6 +20,11 @@ namespace ApiGDS.Api.Controllers
         {
             return await _appendixRepository.GetAllAppendix();
         }
+        [HttpGet("/GetAppendixByName")]
+        public async Task<ActionResult<Appendix>> GetAppendixByName(string name) 
+        {
+            return await _appendixRepository.GetAppendixByName(name);
+        }
         [HttpGet("/GetAppendixByConsultant")]
         public async Task<ActionResult<IEnumerable<Appendix>>> GetAppendixByConsultant(string consultantName)
         {

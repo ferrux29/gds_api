@@ -29,6 +29,13 @@ namespace ApiGDS.Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConsultorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -44,10 +51,16 @@ namespace ApiGDS.Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("consultantId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
 
                     b.HasIndex("consultantId");
 
@@ -174,11 +187,19 @@ namespace ApiGDS.Infraestructure.Migrations
 
             modelBuilder.Entity("ApiGDS.Core.Entities.Appendix", b =>
                 {
+                    b.HasOne("ApiGDS.Core.Entities.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ApiGDS.Core.Entities.Consultant", "consultant")
                         .WithMany()
                         .HasForeignKey("consultantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Client");
 
                     b.Navigation("consultant");
                 });

@@ -41,6 +41,16 @@ namespace ApiGDS.Infraestructure.Services
             return Task.FromResult(_context.Anexos.Where(a => a.ConsultorName == consultantName).ToList());
         }
 
+        public Task<Appendix> GetAppendixByName(string name) 
+        {
+            var searchedAnexo = _context.Anexos.FirstOrDefault(a => a.Name == name);
+            if(searchedAnexo == null)
+            {
+                throw new NotFoundException($"Anexo with name {name} not found.");
+            }
+            return Task.FromResult(searchedAnexo);
+        }
+
         public async Task<Appendix> PostAppendix(AppendixDTO newAppendixDto)
         {
             Consultant? consultant = _context.Consultores.FirstOrDefault(c=> c.Name == newAppendixDto.ConsultorName);

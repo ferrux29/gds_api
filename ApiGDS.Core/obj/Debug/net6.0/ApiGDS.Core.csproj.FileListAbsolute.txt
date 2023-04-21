@@ -54,3 +54,17 @@ D:\UPSA\S9\GDS\Apinew\ApiGDS.Core\obj\Debug\net6.0\refint\ApiGDS.Core.dll
 D:\UPSA\S9\GDS\Apinew\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.pdb
 D:\UPSA\S9\GDS\Apinew\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.genruntimeconfig.cache
 D:\UPSA\S9\GDS\Apinew\ApiGDS.Core\obj\Debug\net6.0\ref\ApiGDS.Core.dll
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\bin\Debug\net6.0\ApiGDS.Core.deps.json
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\bin\Debug\net6.0\ApiGDS.Core.runtimeconfig.json
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\bin\Debug\net6.0\ApiGDS.Core.dll
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\bin\Debug\net6.0\ApiGDS.Core.pdb
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.csproj.AssemblyReference.cache
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.AssemblyInfoInputs.cache
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.AssemblyInfo.cs
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.csproj.CoreCompileInputs.cache
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.dll
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\refint\ApiGDS.Core.dll
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.pdb
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ApiGDS.Core.genruntimeconfig.cache
+C:\Users\sfmvf\Documents\UPSA\S9\GDS\Apigh\ApiGDS.Core\obj\Debug\net6.0\ref\ApiGDS.Core.dll
