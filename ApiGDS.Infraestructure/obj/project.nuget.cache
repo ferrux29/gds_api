@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I5QKjCwNAyDZBBHf6xdWNdSkpQDac+7wELGj2Y/f7qB2qCkZa0/yaMA9WGRwNFJdYLoCbUYP11pX3sLiwMG70g==",
+  "dgSpecHash": "AQZHduGhIHKEoXrAQ8XqiquP1SHc0rGfr3uQqYbHZeY4Aru5i+V8F2QUT4u8+rBahoJjyw19rZyucyJMx36jvQ==",
   "success": true,
-  "projectFilePath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
+  "projectFilePath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sfmvf\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\sfmvf\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

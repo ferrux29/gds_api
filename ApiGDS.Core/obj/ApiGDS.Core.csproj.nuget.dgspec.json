@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj": {}
+    "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj": {}
   },
   "projects": {
-    "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj": {
+    "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj",
+        "projectUniqueName": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj",
         "projectName": "ApiGDS.Core",
-        "projectPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj",
+        "projectPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj",
         "packagesPath": "C:\\Users\\sfmvf\\.nuget\\packages\\",
-        "outputPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\obj\\",
+        "outputPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sfmvf\\AppData\\Roaming\\NuGet\\NuGet.Config",

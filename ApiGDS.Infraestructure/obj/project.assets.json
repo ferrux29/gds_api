@@ -10837,11 +10837,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
+      "projectUniqueName": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
       "projectName": "ApiGDS.Infraestructure",
-      "projectPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
+      "projectPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\ApiGDS.Infraestructure.csproj",
       "packagesPath": "C:\\Users\\sfmvf\\.nuget\\packages\\",
-      "outputPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Infraestructure\\obj\\",
+      "outputPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Infraestructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sfmvf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10858,8 +10858,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj": {
-              "projectPath": "D:\\UPSA\\S9\\GDS\\Apigh\\ApiGDS.Core\\ApiGDS.Core.csproj"
+            "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj": {
+              "projectPath": "D:\\UPSA\\S9\\GDS\\Apinew\\ApiGDS.Core\\ApiGDS.Core.csproj"
             }
           }
         }

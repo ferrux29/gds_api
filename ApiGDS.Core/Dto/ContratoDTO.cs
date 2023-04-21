@@ -12,5 +12,6 @@ namespace ApiGDS.Core.Dto
         public string Clase { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string ClienteName { get; set; } = string.Empty;
+        public int MontoMax { get; set; }
     }
 }

@@ -71,6 +71,7 @@ namespace ApiGDS.Infraestructure.Service
             {
                 Name = newContratoDTO.Name,
                 Clase = newContratoDTO.Clase,
+                MontoMax = newContratoDTO.MontoMax,
                 ClienteName = newContratoDTO.ClienteName,
                 Client = client
             };
