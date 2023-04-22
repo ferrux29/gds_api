@@ -24,7 +24,6 @@ namespace ApiGDS.Api.Controllers
         public async Task<ActionResult<Appendix>> GetAppendixByName(string name) 
         {
             return await _appendixRepository.GetAppendixByName(name);
-            // soy muy manco manco manco
         }
         [HttpGet("/GetAppendixByConsultant")]
         public async Task<ActionResult<IEnumerable<Appendix>>> GetAppendixByConsultant(string consultantName)

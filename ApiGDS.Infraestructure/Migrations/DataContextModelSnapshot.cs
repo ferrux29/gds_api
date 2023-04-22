@@ -185,6 +185,46 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.ToTable("Contratos");
                 });
 
+            modelBuilder.Entity("ApiGDS.Core.Entities.Folder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("AppendixId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("AppendixName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClientName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ContratoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ContratoName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppendixId");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("ContratoId");
+
+                    b.ToTable("Carpetas");
+                });
+
             modelBuilder.Entity("ApiGDS.Core.Entities.Appendix", b =>
                 {
                     b.HasOne("ApiGDS.Core.Entities.Client", "Client")
@@ -240,6 +280,33 @@ namespace ApiGDS.Infraestructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("ApiGDS.Core.Entities.Folder", b =>
+                {
+                    b.HasOne("ApiGDS.Core.Entities.Appendix", "Appendix")
+                        .WithMany()
+                        .HasForeignKey("AppendixId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApiGDS.Core.Entities.Client", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApiGDS.Core.Entities.Contrato", "Contrato")
+                        .WithMany()
+                        .HasForeignKey("ContratoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Appendix");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Contrato");
                 });
 #pragma warning restore 612, 618
         }

@@ -34,7 +34,11 @@ namespace ApiGDS.Infraestructure.Services
 
         public async Task<List<Bill>> GetAllBills()
         {
-            return await _context.Facturas.Include(c => c.Client).Include(c => c.Consultant).Include(a => a.Appendix).ToListAsync();
+            return await _context.Facturas
+                .Include(c => c.Client)
+                .Include(c => c.Consultant)
+                .Include(a => a.Appendix)
+                .ToListAsync();
         }
 
         public Task<Bill> GetBillById(int id)
@@ -63,7 +67,7 @@ namespace ApiGDS.Infraestructure.Services
             Appendix? appendix = _context.Anexos.FirstOrDefault(appendix => appendix.MontoFacturado == newBillDTO.AppendixMontoFacturado);
             if (appendix == null)
             {
-                throw new NotFoundException($"Consultant with name {newBillDTO.ConsultantName} not found.");
+                throw new NotFoundException($"Appendix with value of {newBillDTO.AppendixMontoFacturado} not found.");
             };
             Bill bill = new()
             {
