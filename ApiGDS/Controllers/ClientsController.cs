@@ -44,7 +44,6 @@ namespace ApiGDS.Api.Controllers
         [HttpGet("/GetClientsByName/")]
         public async Task<ActionResult<Client>> GetClient(string name)
         {
-          
             return await _clienteRepository.GetClientByName(name);
         }
 

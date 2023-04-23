@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ZkK79m2Kbi3JVZMwMvPmb8BoKwVtqJt0LW1+C1fxBk8=",
+  "Source": "ApiGDS.Api",
+  "BasePath": "_content/ApiGDS.Api",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
