@@ -23,7 +23,6 @@ namespace ApiGDS.Core.Dto
         public int HorasFeriadoOficina { get; set; }
         public int HorasViajeFacturable { get; set; }
         public int HorasViajeNoFacturable { get; set; }
-        public int Total { get; set; }
         public string Obersavciones { get; set; } = string.Empty;
     }
 }

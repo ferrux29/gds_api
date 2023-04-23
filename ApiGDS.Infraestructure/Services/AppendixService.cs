@@ -33,21 +33,21 @@ namespace ApiGDS.Infraestructure.Services
 
         public async Task<List<Appendix>> GetAllAppendix()
         {
-            return await _context.Anexos.Include(a => a.consultant).ToListAsync();
+            return await _context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).ToListAsync();
         }
 
         public Task<List<Appendix>> GetAllAppendixesByConsultor(string consultantName)
         {
-            return Task.FromResult(_context.Anexos.Where(a => a.ConsultorName == consultantName).ToList());
+            return Task.FromResult(_context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).Where(a => a.ConsultorName == consultantName).ToList());
         }
         public Task<List<Appendix>> GetAllAppendixesByContract(int contractId)
         {
-            return Task.FromResult(_context.Anexos.Where(a => a.ContractId == contractId).ToList());
+            return Task.FromResult(_context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).Where(a => a.ContractId == contractId).ToList());
         }
 
         public Task<Appendix> GetAppendixByName(string name) 
         {
-            var searchedAnexo = _context.Anexos.FirstOrDefault(a => a.ProjectName == name);
+            var searchedAnexo = _context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).FirstOrDefault(a => a.ProjectName == name);
             if(searchedAnexo == null)
             {
                 throw new NotFoundException($"Anexo with name {name} not found.");

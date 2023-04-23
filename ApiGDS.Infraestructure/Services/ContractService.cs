@@ -25,9 +25,8 @@ namespace ApiGDS.Infraestructure.Service
         }
         public Task<Contract> GetContratoById(int id)
         {
-            var searchedContrato = _context.Contratos.FirstOrDefault(
-                contrato => contrato.Id == id
-            );
+            var searchedContrato = _context.Contratos.Include(c => c.Client).FirstOrDefault(
+                contrato => contrato.Id == id);
 
             if (searchedContrato == null)
             {
@@ -38,7 +37,7 @@ namespace ApiGDS.Infraestructure.Service
         }
         public Task<List<Contract>> GetAllContratosByCliente(string clienteName) 
         { 
-            return Task.FromResult(_context.Contratos.Where(contratos => contratos.ClienteName== clienteName).ToList());
+            return Task.FromResult(_context.Contratos.Include(c=>c.Client).Where(contratos => contratos.ClienteName== clienteName).ToList());
         }
         public async Task<Contract> PostContrato(ContractDTo newContratoDTO)
         {
@@ -53,7 +52,8 @@ namespace ApiGDS.Infraestructure.Service
                 Clase = newContratoDTO.Clase,
                 MontoMax = newContratoDTO.MontoMax,
                 ClienteName = newContratoDTO.ClienteName,
-                Client = client
+                Client = client,
+                Fianza = newContratoDTO.Fianza,
             };
             _context.Contratos.Add(contrato);
             await _context.SaveChangesAsync();

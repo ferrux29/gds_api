@@ -34,12 +34,12 @@ namespace ApiGDS.Infraestructure.Services
 
         public async Task <List<TimeReport>> GetAllReports()
         {
-            return await _context.Reporte_Tiempo.Include(r => r.Client).Include(r => r.Consultant).Include(r => r.Appendix).ToListAsync();
+            return await _context.Reporte_Tiempo.Include(c => c.Client).Include(r => r.Consultant).Include(r => r.Appendix).Include(r => r.Appendix.Contract).ToListAsync();
         }
 
         public Task<List<TimeReport>> GetAllReportsByConsultant(string consultantName)
         {
-            return Task.FromResult(_context.Reporte_Tiempo.Where(r => r.ConsultantName == consultantName).ToList());
+            return Task.FromResult(_context.Reporte_Tiempo.Include(r => r.Client).Include(r => r.Consultant).Include(r => r.Appendix).Include(r => r.Appendix.Contract).Where(r => r.ConsultantName == consultantName).ToList());
         }
 
         public async Task<TimeReport> PostReport(TimeReportDTO newReport)
@@ -78,7 +78,10 @@ namespace ApiGDS.Infraestructure.Services
                 HorasFeriadoNoFacturable = newReport.HorasFeriadoNoFacturable,
                 HorasFeriadoOficina = newReport.HorasFeriadoOficina,
                 HorasViajeFacturable = newReport.HorasViajeFacturable,
-                Total = newReport.Total,
+                HorasViajeNoFacturable = newReport.HorasViajeNoFacturable,
+                Total = (newReport.HorasNormalesFacturables+ newReport.HorasNormalesNoFacturables+ newReport.HorasNormalesOficina
+                + newReport.HorasEntrenamiento+ newReport.HorasPermisoEnfermedad+ newReport.HorasVacaciones+ newReport.HorasFeriadoFacturable
+                + newReport.HorasFeriadoNoFacturable+ newReport.HorasFeriadoOficina+ newReport.HorasViajeFacturable+ newReport.HorasViajeNoFacturable),
                 Obersavciones = newReport.Obersavciones,
             };
             _context.Reporte_Tiempo.Add(report);
