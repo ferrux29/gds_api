@@ -29,6 +29,9 @@ namespace ApiGDS.Infraestructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("Assignment")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClientId")
                         .HasColumnType("int");
 
@@ -39,6 +42,9 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.Property<string>("ConsultorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ContractId")
+                        .HasColumnType("int");
 
                     b.Property<string>("CostoEstimado")
                         .IsRequired()
@@ -51,7 +57,7 @@ namespace ApiGDS.Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("ProjectName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -61,6 +67,8 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("ContractId");
 
                     b.HasIndex("consultantId");
 
@@ -152,7 +160,7 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.ToTable("Consultores");
                 });
 
-            modelBuilder.Entity("ApiGDS.Core.Entities.Contrato", b =>
+            modelBuilder.Entity("ApiGDS.Core.Entities.Contract", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -171,12 +179,11 @@ namespace ApiGDS.Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MontoMax")
-                        .HasColumnType("int");
+                    b.Property<bool>("Fianza")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("MontoMax")
+                        .HasColumnType("real");
 
                     b.HasKey("Id");
 
@@ -185,7 +192,7 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.ToTable("Contratos");
                 });
 
-            modelBuilder.Entity("ApiGDS.Core.Entities.Folder", b =>
+            modelBuilder.Entity("ApiGDS.Core.Entities.TimeReport", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -207,12 +214,55 @@ namespace ApiGDS.Infraestructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ContratoId")
+                    b.Property<int>("ConsultantId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ContratoName")
+                    b.Property<string>("ConsultantName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("HorasEntrenamiento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasFeriadoFacturable")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasFeriadoNoFacturable")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasFeriadoOficina")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasNormalesFacturables")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasNormalesNoFacturables")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasNormalesOficina")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasPermisoEnfermedad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasVacaciones")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasViajeFacturable")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasViajeNoFacturable")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Obersavciones")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Total")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Week")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -220,9 +270,9 @@ namespace ApiGDS.Infraestructure.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("ContratoId");
+                    b.HasIndex("ConsultantId");
 
-                    b.ToTable("Carpetas");
+                    b.ToTable("Reporte_Tiempo");
                 });
 
             modelBuilder.Entity("ApiGDS.Core.Entities.Appendix", b =>
@@ -233,6 +283,12 @@ namespace ApiGDS.Infraestructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ApiGDS.Core.Entities.Contract", "Contract")
+                        .WithMany()
+                        .HasForeignKey("ContractId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ApiGDS.Core.Entities.Consultant", "consultant")
                         .WithMany()
                         .HasForeignKey("consultantId")
@@ -240,6 +296,8 @@ namespace ApiGDS.Infraestructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Client");
+
+                    b.Navigation("Contract");
 
                     b.Navigation("consultant");
                 });
@@ -271,7 +329,7 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.Navigation("Consultant");
                 });
 
-            modelBuilder.Entity("ApiGDS.Core.Entities.Contrato", b =>
+            modelBuilder.Entity("ApiGDS.Core.Entities.Contract", b =>
                 {
                     b.HasOne("ApiGDS.Core.Entities.Client", "Client")
                         .WithMany()
@@ -282,7 +340,7 @@ namespace ApiGDS.Infraestructure.Migrations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("ApiGDS.Core.Entities.Folder", b =>
+            modelBuilder.Entity("ApiGDS.Core.Entities.TimeReport", b =>
                 {
                     b.HasOne("ApiGDS.Core.Entities.Appendix", "Appendix")
                         .WithMany()
@@ -296,9 +354,9 @@ namespace ApiGDS.Infraestructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApiGDS.Core.Entities.Contrato", "Contrato")
+                    b.HasOne("ApiGDS.Core.Entities.Consultant", "Consultant")
                         .WithMany()
-                        .HasForeignKey("ContratoId")
+                        .HasForeignKey("ConsultantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -306,7 +364,7 @@ namespace ApiGDS.Infraestructure.Migrations
 
                     b.Navigation("Client");
 
-                    b.Navigation("Contrato");
+                    b.Navigation("Consultant");
                 });
 #pragma warning restore 612, 618
         }

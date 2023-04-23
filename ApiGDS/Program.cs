@@ -18,10 +18,11 @@ string? connectionString = builder.Configuration.GetConnectionString("CS1");
 builder.Services.AddDbContext<AppDbContext>(
     optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
 builder.Services.AddScoped<IClienteRepository, ClientService>();
-builder.Services.AddScoped<IContratoRepository, ContratoService>(); 
+builder.Services.AddScoped<IContractRepository, ContractService>(); 
 builder.Services.AddScoped<IConsultantRepository, ConsultantService>(); 
 builder.Services.AddScoped<IAppendixRepository, AppendixService>();
 builder.Services.AddScoped<IBillRepository, BillService>();
+builder.Services.AddScoped<ITimeReportRepository, ReportService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

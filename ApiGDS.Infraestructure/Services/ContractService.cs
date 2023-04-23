@@ -12,18 +12,18 @@ using System.Threading.Tasks;
 
 namespace ApiGDS.Infraestructure.Service
 {
-    public class ContratoService : IContratoRepository 
+    public class ContractService : IContractRepository 
     {
         public  readonly AppDbContext _context;
-        public ContratoService(AppDbContext context) {  
+        public ContractService(AppDbContext context) {  
             _context = context; 
         }
 
-        public async Task<List<Contrato>> GetAllContratos()
+        public async Task<List<Contract>> GetAllContratos()
         {
             return await _context.Contratos.Include(c => c.Client).ToListAsync();
         }
-        public Task<Contrato> GetContratoById(int id)
+        public Task<Contract> GetContratoById(int id)
         {
             var searchedContrato = _context.Contratos.FirstOrDefault(
                 contrato => contrato.Id == id
@@ -36,30 +36,11 @@ namespace ApiGDS.Infraestructure.Service
 
             return Task.FromResult(searchedContrato);
         }
-        public Task<Contrato> GetContratoByName(string name)
-        {
-            var searchedContrato = _context.Contratos.FirstOrDefault(contrato => contrato.Name == name);
-            if (searchedContrato == null)
-            {
-                throw new NotFoundException($"Contrato with name {name} not found.");
-            }
-
-            return Task.FromResult(searchedContrato);
-        }
-        public Task<Contrato> GetContratoByClase(string clase) 
-        { 
-            var searchedContrato = _context.Contratos.FirstOrDefault(contrato => contrato.Clase== clase);
-            if(searchedContrato == null) 
-            {
-                throw new NotFoundException($"Contrato with clase {clase} not found.");
-            }
-            return Task.FromResult<Contrato>(searchedContrato);
-        }
-        public Task<List<Contrato>> GetAllContratosByCliente(string clienteName) 
+        public Task<List<Contract>> GetAllContratosByCliente(string clienteName) 
         { 
             return Task.FromResult(_context.Contratos.Where(contratos => contratos.ClienteName== clienteName).ToList());
         }
-        public async Task<Contrato> PostContrato(ContratoDTO newContratoDTO)
+        public async Task<Contract> PostContrato(ContractDTo newContratoDTO)
         {
             Client? client = _context.Clientes.FirstOrDefault(cliente => cliente.Name == newContratoDTO.ClienteName);
             if (client == null) 
@@ -67,9 +48,8 @@ namespace ApiGDS.Infraestructure.Service
                 throw new NotFoundException($"Cliente with name {newContratoDTO.ClienteName} not found.");
             };
 
-            Contrato contrato = new()
-            {
-                Name = newContratoDTO.Name,
+            Contract contrato = new()
+            {              
                 Clase = newContratoDTO.Clase,
                 MontoMax = newContratoDTO.MontoMax,
                 ClienteName = newContratoDTO.ClienteName,
@@ -80,7 +60,7 @@ namespace ApiGDS.Infraestructure.Service
             return contrato;
         }
 
-        public Task<bool> UpdateContratoById(int contratoId, Contrato updatedContrato)
+        public Task<bool> UpdateContratoById(int contratoId, Contract updatedContrato)
         {
             throw new NotImplementedException();
         }

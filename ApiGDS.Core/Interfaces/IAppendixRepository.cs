@@ -13,6 +13,7 @@ namespace ApiGDS.Core.Interfaces
         Task<List<Appendix>> GetAllAppendix();
         Task<Appendix> GetAppendixByName(string name);
         Task<List<Appendix>> GetAllAppendixesByConsultor(string consultantName);
+        Task<List<Appendix>> GetAllAppendixesByContract(int contractId);
         Task<Appendix> PostAppendix(AppendixDTO newAppendixDto);
         Task<bool> UpdateAppendixById(int appendixId, Appendix updatedAppendix);
         Task<bool> DeleteAppendixById(int? appendixId);

@@ -15,11 +15,12 @@ namespace ApiGDS.Infraestructure.DbCtx
 
         }
         public DbSet<Client> Clientes  { get; set; }
-        public DbSet<Contrato> Contratos { get; set; }
+        public DbSet<Contract> Contratos { get; set; }
         public DbSet<Consultant> Consultores { get; set; }
         public DbSet<Appendix> Anexos { get; set; }
         public DbSet<Bill> Facturas { get; set; }
-        public DbSet<Folder> Carpetas { get; set; }
+        public DbSet<TimeReport> Reporte_Tiempo { get; set; }
+        
     }
 
 }

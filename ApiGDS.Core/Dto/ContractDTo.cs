@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ApiGDS.Core.Dto
 {
-    public class ContratoDTO
+    public class ContractDTo
     {
         public string Clase { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
         public string ClienteName { get; set; } = string.Empty;
         public int MontoMax { get; set; }
+        public bool Fianza { get; set; }
     }
 }

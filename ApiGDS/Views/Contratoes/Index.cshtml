@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ApiGDS.Core.Entities.Contrato>
+﻿@model IEnumerable<ApiGDS.Core.Entities.Contract>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,9 +16,6 @@
                 @Html.DisplayNameFor(model => model.Clase)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ClienteName)
             </th>
             <th></th>
@@ -29,9 +26,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Clase)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ClienteName)

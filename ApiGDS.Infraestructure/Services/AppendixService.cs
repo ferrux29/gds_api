@@ -40,10 +40,14 @@ namespace ApiGDS.Infraestructure.Services
         {
             return Task.FromResult(_context.Anexos.Where(a => a.ConsultorName == consultantName).ToList());
         }
+        public Task<List<Appendix>> GetAllAppendixesByContract(int contractId)
+        {
+            return Task.FromResult(_context.Anexos.Where(a => a.ContractId == contractId).ToList());
+        }
 
         public Task<Appendix> GetAppendixByName(string name) 
         {
-            var searchedAnexo = _context.Anexos.FirstOrDefault(a => a.Name == name);
+            var searchedAnexo = _context.Anexos.FirstOrDefault(a => a.ProjectName == name);
             if(searchedAnexo == null)
             {
                 throw new NotFoundException($"Anexo with name {name} not found.");
@@ -57,14 +61,30 @@ namespace ApiGDS.Infraestructure.Services
             if (consultant == null)
             {
                 throw new NotFoundException($"Consultant with name {newAppendixDto.ConsultorName} not found");
+            }; 
+            Client? client = _context.Clientes.FirstOrDefault(c => c.Name == newAppendixDto.ClientName);
+            if (client == null)
+            {
+                throw new NotFoundException($"Client with name {newAppendixDto.ClientName} not found");
+            };
+            Contract? contract = _context.Contratos.FirstOrDefault(c => c.Id == newAppendixDto.ContractId);
+            if (contract == null)
+            {
+                throw new NotFoundException($"Contract with name {newAppendixDto.ContractId} not found");
             };
             Appendix appendix = new()
             {
+                ProjectName = newAppendixDto.ProjectName,
+                Assignment = newAppendixDto.Assignment,
                 consultant = consultant,
                 ConsultorName = newAppendixDto.ConsultorName,
                 HorasTrabajadas = newAppendixDto.HorasTrabajadas,
                 CostoEstimado = newAppendixDto.CostoEstimado,
-                MontoFacturado = newAppendixDto.MontoFacturado
+                MontoFacturado = newAppendixDto.MontoFacturado,
+                Client = client,
+                ClientName = newAppendixDto.ClientName,
+                Contract = contract,
+                ContractId = newAppendixDto.ContractId,
             };
             _context.Anexos.Add(appendix);
             await _context.SaveChangesAsync();
