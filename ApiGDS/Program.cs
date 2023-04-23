@@ -23,6 +23,13 @@ builder.Services.AddScoped<IConsultantRepository, ConsultantService>();
 builder.Services.AddScoped<IAppendixRepository, AppendixService>();
 builder.Services.AddScoped<IBillRepository, BillService>();
 builder.Services.AddScoped<ITimeReportRepository, ReportService>();
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +38,8 @@ var app = builder.Build();
     app.UseSwagger();
     app.UseSwaggerUI();
 //}
+
+app.UseCors();
 
 app.UseHttpsRedirection();
 
