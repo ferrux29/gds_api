@@ -28,6 +28,6 @@ namespace ApiGDS.Core.Entities
         public int HorasViajeFacturable { get; set; }
         public int HorasViajeNoFacturable { get; set; }
         public int Total { get; set; }
-        public string Obersavciones { get; set; } = string.Empty;
+        public string Observaciones { get; set; } = string.Empty;
     }
 }

@@ -82,7 +82,7 @@ namespace ApiGDS.Infraestructure.Services
                 Total = (newReport.HorasNormalesFacturables+ newReport.HorasNormalesNoFacturables+ newReport.HorasNormalesOficina
                 + newReport.HorasEntrenamiento+ newReport.HorasPermisoEnfermedad+ newReport.HorasVacaciones+ newReport.HorasFeriadoFacturable
                 + newReport.HorasFeriadoNoFacturable+ newReport.HorasFeriadoOficina+ newReport.HorasViajeFacturable+ newReport.HorasViajeNoFacturable),
-                Obersavciones = newReport.Obersavciones,
+                Observaciones = newReport.Observaciones,
             };
             _context.Reporte_Tiempo.Add(report);
             await _context.SaveChangesAsync();
