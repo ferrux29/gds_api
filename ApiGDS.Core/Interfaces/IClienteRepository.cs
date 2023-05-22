@@ -14,7 +14,7 @@ namespace ApiGDS.Core.Interfaces
         Task<Client> GetClientById(int id);
         Task<Client> GetClientByName(string name);
         Task<Client> PostClient(ClientDTO newClientDto);
-        Task<bool> UpdateClientById(int clientId, Client updatedClient);
+        Task<bool> UpdateClientById(int clientId, ClientDTO updatedClient);
         Task<bool> DeleteClientById(int? clienteId);
     }
 }

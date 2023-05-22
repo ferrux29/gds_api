@@ -56,9 +56,18 @@ namespace ApiGDS.Infraestructure.Service
             return client;
         }
 
-        public Task<bool> UpdateClientById(int clientId, Client updatedClient)
+        public async Task<bool> UpdateClientById(int clientId, ClientDTO updatedClient)
         {
-            throw new NotImplementedException();
+            var searchedClient = _context.Clientes.FirstOrDefault(client => client.Id == clientId);
+            if (searchedClient == null) 
+            {
+                return false;
+            }
+            searchedClient.Name = updatedClient.Name;
+            searchedClient.ClienteCategory = updatedClient.ClienteCategory;
+            _context.Clientes.Update(searchedClient);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> DeleteClientById(int? clientId)

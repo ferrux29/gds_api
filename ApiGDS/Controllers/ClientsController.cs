@@ -55,27 +55,16 @@ namespace ApiGDS.Api.Controllers
             Client client = await _clienteRepository.PostClient(clientDto);
             return CreatedAtAction("GetClient", new { id = client.Id }, client);
         }
-        /*// PUT: Clientes/Edit/5
+        // PUT: Clientes/Edit/5
         [HttpPut("/EditClienteById/{id:int}")]
-        public async Task<HttpStatusCode> Edit(int? id, [FromBody] Client cliente)
+        public async Task<IActionResult> Update(int id, ClientDTO clientDto)
         {
-            if (id == null || _context.Clientes == null || _clienteRepository == null)
+            if (await _clienteRepository.UpdateClientById(id, clientDto))
             {
-                return HttpStatusCode.NotFound;
-            }
-
-            if (cliente == null)
-            {
-                return HttpStatusCode.NotFound;
-            }
-            if (cliente.Id == id)
-            {
-                _clienteRepository.UpdateClientById(clientId)
-                await _context.SaveChangesAsync();
-                return HttpStatusCode.OK;
-            }
-            return HttpStatusCode.NotModified;
-        }*/
+                return NoContent();
+            };
+            return BadRequest("Error al editar el cliente");
+        }
         // DELETE: Clientes/delete/5
         [HttpDelete("/DeleteClienteById/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
