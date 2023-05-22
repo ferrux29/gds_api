@@ -51,9 +51,17 @@ namespace ApiGDS.Infraestructure.Services
             await _context.SaveChangesAsync();
             return consultant;
         }
-        public Task<bool> UpdateConsultantById(int consultantId, Consultant updatedConsultant)
+        public async Task<bool> UpdateConsultantById(int consultantId, ConsultantDTO updatedConsultant)
         {
-            throw new NotImplementedException();
+            var searchedConsultant = _context.Consultores.FirstOrDefault(c => c.Id == consultantId);
+            if(searchedConsultant == null)
+            {
+                return false;
+            }
+            searchedConsultant.Name = updatedConsultant.Name;
+            _context.Consultores.Update(searchedConsultant);
+            await _context.SaveChangesAsync();
+            return true;
         }
         public async Task<bool> DeleteConsultantById(int? consultantId) 
         {

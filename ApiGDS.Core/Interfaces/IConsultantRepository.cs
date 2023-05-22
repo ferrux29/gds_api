@@ -14,7 +14,7 @@ namespace ApiGDS.Core.Interfaces
         Task<Consultant> GetConsultantById(int id);
         Task<Consultant> GetConsultantByName(string name);
         Task<Consultant> PostConsultant(ConsultantDTO newConsultantDto);
-        Task<bool> UpdateConsultantById(int consultantId, Consultant updatedConsultant);
+        Task<bool> UpdateConsultantById(int consultantId, ConsultantDTO updatedConsultant);
         Task<bool> DeleteConsultantById(int? consultantId);
     }
 }

@@ -51,5 +51,14 @@ namespace ApiGDS.Api.Controllers
             }
             return Ok(await _consultantRepository.DeleteConsultantById(id));
         }
+        [HttpPut("/EditConsultantById/{id:int}")]
+        public async Task<IActionResult> Update(int id, ConsultantDTO consultantDto)
+        {
+            if(await _consultantRepository.UpdateConsultantById(id, consultantDto))
+            {
+                return NoContent();
+            }    
+            return BadRequest("Error al editar el consultor");
+        }
     }
 }
