@@ -23,6 +23,7 @@ builder.Services.AddScoped<IConsultantRepository, ConsultantService>();
 builder.Services.AddScoped<IAppendixRepository, AppendixService>();
 builder.Services.AddScoped<IBillRepository, BillService>();
 builder.Services.AddScoped<ITimeReportRepository, ReportService>();
+builder.Services.AddScoped<IServiceRepository, ServicioService>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
