@@ -13,6 +13,8 @@ namespace ApiGDS.Core.Entities
        public float MontoMax { get; set; }
        public bool Fianza { get; set; }
        public Client Client { get; set; } = new Client();
-       public string ClienteName { get; set; } = string.Empty;
+        public string ClienteName { get; set; } = string.Empty;
+        public Service Service { get; set; } = new Service();
+        public string ServiceName { get; set; } = string.Empty;
     }
 }
