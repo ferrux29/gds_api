@@ -21,6 +21,7 @@ namespace ApiGDS.Infraestructure.DbCtx
         public DbSet<Bill> Facturas { get; set; }
         public DbSet<TimeReport> Reporte_Tiempo { get; set; }
         public DbSet<ApiGDS.Core.Entities.Service> Servicios { get; set; }
+        public DbSet<Activity> Actividades { get; set; }
         
     }
 

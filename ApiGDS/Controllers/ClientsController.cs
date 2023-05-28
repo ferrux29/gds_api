@@ -70,9 +70,7 @@ namespace ApiGDS.Api.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                return NotFound();          
             return Ok(await _clienteRepository.DeleteClientById(id));
         }
     }

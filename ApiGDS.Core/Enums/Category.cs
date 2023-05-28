@@ -10,9 +10,9 @@ namespace ApiGDS.Core.Enums
     {
         Gobierno = 1,
         Industria = 2,
-        IndustriaPetrolera = 3,
+        Industria_Petrolera = 3,
         Comercio = 4,
         Bancos = 5,
-        CompaniasAseguradoras = 6
+        Companias_Aseguradoras = 6
     }
 }
