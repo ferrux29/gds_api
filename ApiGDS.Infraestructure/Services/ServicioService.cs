@@ -46,9 +46,28 @@ namespace ApiGDS.Infraestructure.Services
             return service;
         }
 
-        public Task<bool> UpdateService(int serviceId, Core.Entities.Service updatedService)
+        public async Task<bool> UpdateService(int serviceId, ServiceDTO updatedService)
         {
-            throw new NotImplementedException();
+            var searchedService = _context.Servicios.FirstOrDefault(s => s.Id == serviceId);
+            if(searchedService == null)
+            {
+                return false;
+            }
+            searchedService.Name = updatedService.Name;
+            searchedService.Price = updatedService.Price;
+            searchedService.Description = updatedService.Description;
+            _context.Servicios.Update(searchedService);
+            var appendixes = _context.Anexos.Where(a => a.Service.Id == searchedService.Id).ToList();
+            if(appendixes.Any())
+            {
+                appendixes.ForEach(a =>
+                {
+                    a.ServiceName = searchedService.Name;
+                    _context.Anexos.Update(a);
+                });
+            }
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

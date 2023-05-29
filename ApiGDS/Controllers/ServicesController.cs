@@ -36,5 +36,14 @@ namespace ApiGDS.Api.Controllers
             }
             return Ok(await _servicesRepository.DeleteServiceById(id));
         }
+        [HttpPut("/UpdateServiceById/{id:int}")]
+        public async Task<IActionResult> Update(int id, ServiceDTO serviceDto)
+        {
+            if(await _servicesRepository.UpdateService(id, serviceDto))
+            {
+                return NoContent();
+            }
+            return BadRequest("Error al editar el servicio");
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace ApiGDS.Core.Interfaces
         Task<Contract> GetContratoById(int id);
         Task<List<Contract>> GetAllContratosByCliente(string clienteName);
         Task<Contract> PostContrato(ContractDTo newContratoDTO);
-        Task<bool> UpdateContratoById(int contratoId, Contract updatedContrato);
+        Task<bool> UpdateContratoById(int contratoId, ContractEditDto updatedContrato);
         Task<bool> DeleteContratoById(int? contratoId);
     }
 }

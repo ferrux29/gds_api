@@ -60,9 +60,17 @@ namespace ApiGDS.Infraestructure.Service
             return contrato;
         }
 
-        public Task<bool> UpdateContratoById(int contratoId, Contract updatedContrato)
+        public async Task<bool> UpdateContratoById(int contratoId, ContractEditDto updatedContrato)
         {
-            throw new NotImplementedException();
+            var searchedContract = _context.Contratos.FirstOrDefault(c => c.Id == contratoId);
+            if(searchedContract == null)
+            {
+                return false;
+            }
+            searchedContract.MontoMax = updatedContrato.MontoMax;
+            searchedContract.Fianza = updatedContrato.Fianza;
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<bool> DeleteContratoById(int? contratoId)

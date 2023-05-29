@@ -45,5 +45,14 @@ namespace ApiGDS.Api.Controllers
             }
             return Ok(await _appendixRepository.DeleteAppendixById(id));
         }
+        [HttpPut("/EditAppendixById/{id:int}")]
+        public async Task<IActionResult> Update(int id, AppendixEditDto appendixDTO)
+        {
+            if (await _appendixRepository.UpdateAppendixById(id, appendixDTO))
+            {
+                return NoContent();
+            }
+            return BadRequest("Error al editar el anexo");
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace ApiGDS.Core.Interfaces
     public interface IActivityRepository
     {
         Task<List<Activity>> GetAllActivities();
-        Task<Activity> PostActivity(ActivityDTO newActivityDto);
+        Task<bool> UpdateActivityById(int activityId, ActivityDTO updatedActivity);
         Task<bool> DeleteActivityById(int? activityId);
     }
 }

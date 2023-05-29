@@ -59,5 +59,14 @@ namespace ApiGDS.Api.Controllers
             }
             return Ok(await _contratoRepository.DeleteContratoById(id));
         }
+        [HttpPut("/EditContractById/{id:int}")]
+        public async Task<IActionResult> Update(int id, ContractEditDto contractDto)
+        {
+            if(await _contratoRepository.UpdateContratoById(id, contractDto))
+            {
+                return NoContent();
+            }
+            return BadRequest("Error al editar el contrato");
+        }
     }
 }

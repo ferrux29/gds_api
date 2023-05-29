@@ -80,9 +80,20 @@ namespace ApiGDS.Infraestructure.Services
             return report;
         }
 
-        public Task<bool> UpdateReportById(int reportId, TimeReport updatedReport)
+        public async Task<bool> UpdateReportById(int reportId, ReportDto updatedReport)
         {
-            throw new NotImplementedException();
+            var searchedReport = _context.Reporte_Tiempo.FirstOrDefault(rt => rt.Id == reportId);
+            if(searchedReport == null)
+            {
+                return false;
+            }
+            searchedReport.Horas = updatedReport.Horas;
+            searchedReport.Observaciones = updatedReport.Observaciones;
+            searchedReport.FirmaCliente = updatedReport.FirmaCliente;
+            searchedReport.FirmaEmpleado = updatedReport.FirmaEmpleado;
+            _context.Reporte_Tiempo.Update(searchedReport);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -86,9 +86,43 @@ namespace ApiGDS.Infraestructure.Services
             return appendix;
         }
 
-        public async Task<bool> UpdateAppendixById(int appendixId, Appendix updatedAppendix)
+        public async Task<bool> UpdateAppendixById(int appendixId, AppendixEditDto updatedAppendix)
         {
-            throw new NotImplementedException();
+            Consultant? consultant = _context.Consultores.FirstOrDefault(c => c.Name == updatedAppendix.ConsultorName);
+            if (consultant == null)
+            {
+                throw new NotFoundException($"Consultant with name {updatedAppendix.ConsultorName} not found");
+            };
+            ApiGDS.Core.Entities.Service? service = _context.Servicios.FirstOrDefault(s => s.Name == updatedAppendix.ServiceName);
+            if (service == null)
+            {
+                throw new NotFoundException($"Service with name {updatedAppendix.ServiceName} not found");
+            }
+            var searchedAppendix = _context.Anexos.FirstOrDefault(a => a.Id == appendixId);
+            if(searchedAppendix == null)
+            {
+                return false;
+            }
+            searchedAppendix.ProjectName = updatedAppendix.ProjectName;
+            searchedAppendix.Service = service;
+            searchedAppendix.ServiceName = updatedAppendix.ServiceName;
+            searchedAppendix.Assignment = updatedAppendix.Assignment;
+            searchedAppendix.consultant = consultant;
+            searchedAppendix.ConsultorName = updatedAppendix.ConsultorName;
+            searchedAppendix.HorasTrabajadas = updatedAppendix.HorasTrabajadas;
+            searchedAppendix.CostoEstimado = updatedAppendix.CostoEstimado;
+            _context.Anexos.Update(searchedAppendix);
+            var reportes = _context.Reporte_Tiempo.Where(rt => rt.Appendix.Id == appendixId).ToList();
+            if(reportes.Any())
+            {
+                reportes.ForEach(rt =>
+                {
+                    rt.AppendixName = searchedAppendix.ProjectName;
+                    _context.Reporte_Tiempo.Update(rt);
+                });
+            }
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -20,18 +20,22 @@ namespace ApiGDS.Api.Controllers
         {
             return await _activityRepository.GetAllActivities();
         }
-        [HttpPost("/CreateActivity")]
-        public async Task<ActionResult<Activity>> PostActivity(ActivityDTO activityDto)
-        {
-            Activity activity = await _activityRepository.PostActivity(activityDto);
-            return Ok(activity);
-        }
+        
         [HttpDelete("/DeleteActivityById/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if(id == null) 
                 return NotFound();
             return Ok(await _activityRepository.DeleteActivityById(id));
+        }
+        [HttpPut("/EditActivityById/{id:int}")]
+        public async Task<IActionResult> Update(int id, ActivityDTO activity)
+        {
+            if(await _activityRepository.UpdateActivityById(id, activity))
+            {
+                return NoContent();
+            }
+            return BadRequest("Error al editar la actividad");
         }
     }
 }

@@ -40,5 +40,14 @@ namespace ApiGDS.Api.Controllers
             }
             return Ok(await _timeReportRepository.DeleteReportById(id));
         }
+        [HttpPut("/EditReportById/{id:int}")]
+        public async Task<IActionResult> Update(int id, ReportDto timeReportDto)
+        {
+            if(await _timeReportRepository.UpdateReportById(id, timeReportDto))
+            {
+                return NoContent();
+            }
+            return BadRequest("Error al editar reporte");
+        }
     }
 }

@@ -36,15 +36,19 @@ namespace ApiGDS.Infraestructure.Services
             return Task.FromResult(_context.Actividades.ToList());
         }
 
-        public async Task<Activity> PostActivity(ActivityDTO newActivityDto)
+        public async Task<bool> UpdateActivityById(int activityId, ActivityDTO updatedActivity)
         {
-            Activity activity = new Activity();
-            activity.Name = newActivityDto.Name;
-            activity.Code = newActivityDto.Code;
-            activity.Category = newActivityDto.Category;
-            _context.Actividades.Add(activity);
+            var searchedActivity = _context.Actividades.FirstOrDefault(a => a.Id == activityId);
+            if(searchedActivity == null)
+            {
+                return false;
+            }
+            searchedActivity.Name = updatedActivity.Name;
+            searchedActivity.Code = updatedActivity.Code;
+            searchedActivity.Category = updatedActivity.Category;
+            _context.Actividades.Update(searchedActivity);
             await _context.SaveChangesAsync();
-            return activity;
+            return true;
         }
     }
 }

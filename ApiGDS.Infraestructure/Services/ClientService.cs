@@ -66,6 +66,24 @@ namespace ApiGDS.Infraestructure.Service
             searchedClient.Name = updatedClient.Name;
             searchedClient.ClienteCategory = updatedClient.ClienteCategory;
             _context.Clientes.Update(searchedClient);
+            var contratos = _context.Contratos.Where(c => c.Client.Id == searchedClient.Id).ToList();
+            if(contratos.Any()) 
+            {
+                contratos.ForEach(c => 
+                    { 
+                        c.ClienteName = searchedClient.Name; 
+                        _context.Contratos.Update(c); 
+                    });
+            }
+            var reportes = _context.Reporte_Tiempo.Where(rt => rt.Client.Id == searchedClient.Id).ToList();
+            if(reportes.Any())
+            {
+                reportes.ForEach(rt =>
+                {
+                    rt.ClientName = searchedClient.Name;
+                    _context.Reporte_Tiempo.Update(rt);
+                });
+            }
             await _context.SaveChangesAsync();
             return true;
         }

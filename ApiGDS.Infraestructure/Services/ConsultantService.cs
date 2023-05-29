@@ -60,6 +60,24 @@ namespace ApiGDS.Infraestructure.Services
             }
             searchedConsultant.Name = updatedConsultant.Name;
             _context.Consultores.Update(searchedConsultant);
+            var appendixes = _context.Anexos.Where(a => a.consultant.Id == searchedConsultant.Id).ToList();
+            if (appendixes.Any())
+            {
+                appendixes.ForEach(a =>
+                {
+                    a.ConsultorName = searchedConsultant.Name;
+                    _context.Anexos.Update(a);
+                });
+            }
+            var reportes = _context.Reporte_Tiempo.Where(rt => rt.Consultant.Id == searchedConsultant.Id).ToList();
+            if (reportes.Any())
+            {
+                reportes.ForEach(rt =>
+                {
+                    rt.ConsultantName = searchedConsultant.Name;
+                    _context.Reporte_Tiempo.Update(rt);
+                });
+            }
             await _context.SaveChangesAsync();
             return true;
         }

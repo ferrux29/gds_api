@@ -13,7 +13,7 @@ namespace ApiGDS.Core.Interfaces
         Task<List<TimeReport>> GetAllReports();
         Task<List<TimeReport>> GetAllReportsByConsultant(string consultantName);
         Task<TimeReport> PostReport(TimeReportDTO newReport);
-        Task<bool> UpdateReportById(int reportId, TimeReport updatedReport);
+        Task<bool> UpdateReportById(int reportId, ReportDto updatedReport);
         Task<bool> DeleteReportById(int? reportId);
     }
 }
