@@ -3,12 +3,14 @@ using ApiGDS.Infraestructure.DbCtx;
 using ApiGDS.Infraestructure.Service;
 using ApiGDS.Infraestructure.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+//builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,7 +23,6 @@ builder.Services.AddScoped<IClienteRepository, ClientService>();
 builder.Services.AddScoped<IContractRepository, ContractService>(); 
 builder.Services.AddScoped<IConsultantRepository, ConsultantService>(); 
 builder.Services.AddScoped<IAppendixRepository, AppendixService>();
-builder.Services.AddScoped<IBillRepository, BillService>();
 builder.Services.AddScoped<ITimeReportRepository, ReportService>();
 builder.Services.AddScoped<IServiceRepository, ServicioService>();
 builder.Services.AddScoped<IActivityRepository, ActivityService>();
@@ -33,6 +34,7 @@ builder.Services.AddCors(options =>
     });
 });
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())

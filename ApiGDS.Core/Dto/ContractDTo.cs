@@ -9,10 +9,8 @@ namespace ApiGDS.Core.Dto
 {
     public class ContractDTo
     {
-        public string Clase { get; set; } = string.Empty;
         public string ClienteName { get; set; } = string.Empty;
         public int MontoMax { get; set; }
         public bool Fianza { get; set; }
-        public string ServiceName { get; set; } = string.Empty;
     }
 }

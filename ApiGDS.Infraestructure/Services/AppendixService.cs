@@ -33,21 +33,17 @@ namespace ApiGDS.Infraestructure.Services
 
         public async Task<List<Appendix>> GetAllAppendix()
         {
-            return await _context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).ToListAsync();
+            return await _context.Anexos.Include(c => c.consultant).Include(c => c.Contract).Include(c => c.Contract.Client).Include(s => s.Service).ToListAsync();
         }
 
-        public Task<List<Appendix>> GetAllAppendixesByConsultor(string consultantName)
-        {
-            return Task.FromResult(_context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).Where(a => a.ConsultorName == consultantName).ToList());
-        }
         public Task<List<Appendix>> GetAllAppendixesByContract(int contractId)
         {
-            return Task.FromResult(_context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).Where(a => a.ContractId == contractId).ToList());
+            return Task.FromResult(_context.Anexos.Include(c => c.consultant).Include(c => c.Contract).Include(c => c.Contract.Client).Include(s => s.Service).Where(a => a.ContractId == contractId).ToList());
         }
 
         public Task<Appendix> GetAppendixByName(string name) 
         {
-            var searchedAnexo = _context.Anexos.Include(c => c.consultant).Include(c => c.Client).Include(c => c.Contract).FirstOrDefault(a => a.ProjectName == name);
+            var searchedAnexo = _context.Anexos.Include(c => c.consultant).Include(c => c.Contract).Include(c => c.Contract.Client).Include(s => s.Service).FirstOrDefault(a => a.ProjectName == name);
             if(searchedAnexo == null)
             {
                 throw new NotFoundException($"Anexo with name {name} not found.");
@@ -62,27 +58,26 @@ namespace ApiGDS.Infraestructure.Services
             {
                 throw new NotFoundException($"Consultant with name {newAppendixDto.ConsultorName} not found");
             }; 
-            Client? client = _context.Clientes.FirstOrDefault(c => c.Name == newAppendixDto.ClientName);
-            if (client == null)
-            {
-                throw new NotFoundException($"Client with name {newAppendixDto.ClientName} not found");
-            };
             Contract? contract = _context.Contratos.FirstOrDefault(c => c.Id == newAppendixDto.ContractId);
             if (contract == null)
             {
                 throw new NotFoundException($"Contract with name {newAppendixDto.ContractId} not found");
             };
+            ApiGDS.Core.Entities.Service? service = _context.Servicios.FirstOrDefault(s => s.Name == newAppendixDto.ServiceName);
+            if(service == null)
+            {
+                throw new NotFoundException($"Service with name {newAppendixDto.ServiceName} not found");
+            }
             Appendix appendix = new()
             {
                 ProjectName = newAppendixDto.ProjectName,
+                Service = service,
+                ServiceName = newAppendixDto.ServiceName,
                 Assignment = newAppendixDto.Assignment,
                 consultant = consultant,
                 ConsultorName = newAppendixDto.ConsultorName,
                 HorasTrabajadas = newAppendixDto.HorasTrabajadas,
                 CostoEstimado = newAppendixDto.CostoEstimado,
-                MontoFacturado = newAppendixDto.MontoFacturado,
-                Client = client,
-                ClientName = newAppendixDto.ClientName,
                 Contract = contract,
                 ContractId = newAppendixDto.ContractId,
             };

@@ -11,14 +11,13 @@ namespace ApiGDS.Core.Entities
     {
         public int Id { get; set; }
         public string ProjectName { get; set; } = string.Empty;
+        public Service Service { get; set; } = new Service();
+        public string ServiceName { get; set; } = string.Empty;
         public Assignment Assignment { get; set; }
         public Consultant consultant { get; set; } = new Consultant();
         public string ConsultorName { get; set; } = string.Empty;
         public int HorasTrabajadas { get; set; }
         public string CostoEstimado { get; set; } = string.Empty;
-        public string MontoFacturado { get; set; } = string.Empty;
-        public Client Client { get; set; } = new Client();
-        public string ClientName { get; set; } = string.Empty;
         public Contract Contract { get; set; } = new Contract();
         public int ContractId { get; set; }
 

@@ -59,30 +59,21 @@ namespace ApiGDS.Infraestructure.Services
             {
                 throw new NotFoundException($"Appendix with name of {newReport.AppendixName} not found.");
             };
+
             TimeReport report = new()
             {
+                Serial = newReport.Serial,
                 Client = client,
                 ClientName = newReport.ClientName,
                 Consultant = consultant,
                 ConsultantName = newReport.ConsultantName,
                 Appendix = appendix,
                 AppendixName = newReport.AppendixName,
-                Week = newReport.Week,
-                HorasNormalesFacturables = newReport.HorasNormalesFacturables,
-                HorasNormalesNoFacturables = newReport.HorasNormalesNoFacturables,
-                HorasNormalesOficina = newReport.HorasNormalesOficina,
-                HorasEntrenamiento = newReport.HorasEntrenamiento,
-                HorasPermisoEnfermedad = newReport.HorasPermisoEnfermedad,
-                HorasVacaciones = newReport.HorasVacaciones,
-                HorasFeriadoFacturable = newReport.HorasFeriadoFacturable,
-                HorasFeriadoNoFacturable = newReport.HorasFeriadoNoFacturable,
-                HorasFeriadoOficina = newReport.HorasFeriadoOficina,
-                HorasViajeFacturable = newReport.HorasViajeFacturable,
-                HorasViajeNoFacturable = newReport.HorasViajeNoFacturable,
-                Total = (newReport.HorasNormalesFacturables+ newReport.HorasNormalesNoFacturables+ newReport.HorasNormalesOficina
-                + newReport.HorasEntrenamiento+ newReport.HorasPermisoEnfermedad+ newReport.HorasVacaciones+ newReport.HorasFeriadoFacturable
-                + newReport.HorasFeriadoNoFacturable+ newReport.HorasFeriadoOficina+ newReport.HorasViajeFacturable+ newReport.HorasViajeNoFacturable),
+                Horas = newReport.Horas,
                 Observaciones = newReport.Observaciones,
+                FirmaCliente = newReport.FirmaCliente,
+                FirmaEmpleado = newReport.FirmaEmpleado,
+                Activities = newReport.Activities,
             };
             _context.Reporte_Tiempo.Add(report);
             await _context.SaveChangesAsync();

@@ -10,12 +10,11 @@ namespace ApiGDS.Core.Dto
     public class AppendixDTO
     {
         public string ProjectName { get; set; } = string.Empty;
+        public string ServiceName { get; set; } = string.Empty;
         public Assignment Assignment { get; set; }
         public string ConsultorName { get; set; } = string.Empty;
         public int HorasTrabajadas { get; set; }
         public string CostoEstimado { get; set; } = string.Empty;
-        public string MontoFacturado { get; set; } = string.Empty;
-        public string ClientName { get; set; } = string.Empty;
         public int ContractId { get; set; }
     }
 }

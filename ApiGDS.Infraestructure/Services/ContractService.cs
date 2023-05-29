@@ -21,11 +21,11 @@ namespace ApiGDS.Infraestructure.Service
 
         public async Task<List<Contract>> GetAllContratos()
         {
-            return await _context.Contratos.Include(c => c.Client).Include(s => s.Service).ToListAsync();
+            return await _context.Contratos.Include(c => c.Client).ToListAsync();
         }
         public Task<Contract> GetContratoById(int id)
         {
-            var searchedContrato = _context.Contratos.Include(c => c.Client).Include(s => s.Service).FirstOrDefault(
+            var searchedContrato = _context.Contratos.Include(c => c.Client).FirstOrDefault(
                 contrato => contrato.Id == id);
 
             if (searchedContrato == null)
@@ -46,21 +46,14 @@ namespace ApiGDS.Infraestructure.Service
             {
                 throw new NotFoundException($"Cliente with name {newContratoDTO.ClienteName} not found.");
             };
-            ApiGDS.Core.Entities.Service? service = _context.Servicios.FirstOrDefault(s => s.Name == newContratoDTO.ServiceName);
-            if (service == null)
-            {
-                throw new NotFoundException($"Servicio with name {newContratoDTO.ClienteName} not found.");
-            };
 
             Contract contrato = new()
             {              
-                Clase = newContratoDTO.Clase,
                 MontoMax = newContratoDTO.MontoMax,
                 ClienteName = newContratoDTO.ClienteName,
                 Client = client,
                 Fianza = newContratoDTO.Fianza,
-                ServiceName = newContratoDTO.ServiceName,
-                Service = service,
+
             };
             _context.Contratos.Add(contrato);
             await _context.SaveChangesAsync();
