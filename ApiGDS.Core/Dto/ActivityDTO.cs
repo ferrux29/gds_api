@@ -12,5 +12,6 @@ namespace ApiGDS.Core.Dto
         public string Name { get; set; } = string.Empty;
         public int Code { get; set; }
         public ActivityCategory Category { get; set; }
+        public int TimeReportId { get; set; }
     }
 }

@@ -17,6 +17,6 @@ namespace ApiGDS.Core.Dto
         public string Observaciones { get; set; } = string.Empty;
         public string FirmaEmpleado { get; set; } = string.Empty;
         public string FirmaCliente { get; set; } = string.Empty;
-        public List<Activity> Activities { get; set; } = new List<Activity>();
+        //public List<Activity> Activities { get; set; } = new List<Activity>();
     }
 }

@@ -13,7 +13,9 @@ namespace ApiGDS.Core.Entities
         public string Name { get; set; } = string.Empty;
         public int Code { get; set; }
         public ActivityCategory Category { get; set; }
-        /*public TimeReport TimeReport { get; set; } = new TimeReport();
-        public int TimeReportId { get; set; }*/
+
+        public TimeReport timeReport { get; set; } = new TimeReport();
+        public int TimeReportId { get; set; }
+
     }
 }

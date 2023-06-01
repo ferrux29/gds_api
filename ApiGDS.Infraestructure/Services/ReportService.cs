@@ -73,7 +73,8 @@ namespace ApiGDS.Infraestructure.Services
                 Observaciones = newReport.Observaciones,
                 FirmaCliente = newReport.FirmaCliente,
                 FirmaEmpleado = newReport.FirmaEmpleado,
-                Activities = newReport.Activities,
+                //Activities = newReport.Activities,
+
             };
             _context.Reporte_Tiempo.Add(report);
             await _context.SaveChangesAsync();

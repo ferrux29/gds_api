@@ -28,6 +28,12 @@ namespace ApiGDS.Api.Controllers
                 return NotFound();
             return Ok(await _activityRepository.DeleteActivityById(id));
         }
+
+        [HttpGet("/GetActivitiesByReport")]
+        public async Task<ActionResult<IEnumerable<Activity>>> GetActivitiesByReport(int reportId)
+        {
+            return await _activityRepository.GetAllActivitiesByReport(reportId);
+        }
         [HttpPut("/EditActivityById/{id:int}")]
         public async Task<IActionResult> Update(int id, ActivityDTO activity)
         {
@@ -36,6 +42,12 @@ namespace ApiGDS.Api.Controllers
                 return NoContent();
             }
             return BadRequest("Error al editar la actividad");
+        }
+        [HttpPost("/CreateActivity")]
+        public async Task<ActionResult<Activity>> PostActivity(ActivityDTO newActivity)
+        {
+            Activity activity = await _activityRepository.PostActivity(newActivity);
+            return Ok(activity);
         }
     }
 }

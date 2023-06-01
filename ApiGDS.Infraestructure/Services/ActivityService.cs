@@ -36,6 +36,30 @@ namespace ApiGDS.Infraestructure.Services
             return Task.FromResult(_context.Actividades.ToList());
         }
 
+        public Task<List<Activity>> GetAllActivitiesByReport(int reportId)
+        {
+            return Task.FromResult(_context.Actividades.Where(a => a.TimeReportId == reportId).ToList());
+        }
+        public async Task<Activity> PostActivity(ActivityDTO newActivity)
+        {
+            TimeReport? report = _context.Reporte_Tiempo.FirstOrDefault(rt => rt.Id == newActivity.TimeReportId);
+            if (report == null)
+            {
+                throw new DirectoryNotFoundException($"Report with id {newActivity.TimeReportId} not found.");
+            }
+            Activity activity = new()
+            {
+                Name = newActivity.Name,
+                Code = newActivity.Code,
+                Category = newActivity.Category,
+                timeReport = report,
+                TimeReportId = newActivity.TimeReportId,
+            };
+            _context.Actividades.Add(activity);
+            await _context.SaveChangesAsync();
+            return activity;
+        }
+
         public async Task<bool> UpdateActivityById(int activityId, ActivityDTO updatedActivity)
         {
             var searchedActivity = _context.Actividades.FirstOrDefault(a => a.Id == activityId);
