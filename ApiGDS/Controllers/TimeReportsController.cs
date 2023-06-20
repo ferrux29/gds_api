@@ -31,7 +31,7 @@ namespace ApiGDS.Api.Controllers
             TimeReport report = await _timeReportRepository.PostReport(timeReportDTO);
             return Ok(report);
         }
-        [HttpDelete("/DeleteReport")]
+        [HttpDelete("/DeleteReport/{id:int}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if(id == null)
